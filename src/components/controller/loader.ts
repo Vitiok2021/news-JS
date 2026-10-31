@@ -1,18 +1,25 @@
+enum HttpMethod {
+    GET ="GET",
+    POST = "POST"
+}
+
+type Endpoint = 'sources' | 'everything';
+
 class Loader {
     private baseLink: string;
-    private options: Record<string, string>;
-    constructor(baseLink: string, options: Record<string, string>) {
+    private options: Partial<Record<string, string>>;
+    constructor(baseLink: string, options: Partial<Record<string, string>>) {
         this.baseLink = baseLink;
         this.options = options;
     }
 
     getResp<T>(
-        { endpoint, options = {} }: { endpoint: string; options?: Record<string, string> },
+        { endpoint, options = {} }: { endpoint: Endpoint; options?: Partial<Record<string, string>> },
         callback: (data: T) => void = () => {
             console.error('No callback for GET response');
         }
     ) {
-        this.load('GET', endpoint, callback, options);
+        this.load(HttpMethod.GET, endpoint, callback, options);
     }
 
     errorHandler(res: Response) {
@@ -25,7 +32,7 @@ class Loader {
         return res;
     }
 
-    makeUrl(options: Record<string, string>, endpoint: string): string {
+    makeUrl(options: Partial<Record<string, string>>, endpoint: Endpoint): string {
         const urlOptions = { ...this.options, ...options };
         let url = `${this.baseLink}${endpoint}?`;
 
@@ -36,7 +43,7 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    load<T>(method: string, endpoint: string, callback: (data: T) => void, options: Record<string, string> = {}) {
+    load<T>(method: HttpMethod, endpoint: Endpoint, callback: (data: T) => void, options: Partial<Record<string, string>> = {}) {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res) => res.json())
