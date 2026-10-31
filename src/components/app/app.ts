@@ -1,5 +1,5 @@
-import AppController from '../controller/controller.js';
-import { AppView } from '../view/appView.js';
+import AppController from '../controller/controller';
+import { AppView } from '../view/appView';
 import type { SourcesResponse, ArticlesResponse } from '../../types/index.js';
 
 class App {

@@ -1,5 +1,5 @@
 import './news.css';
-import type { Article } from '../../../types/index.js';
+import type { Article } from '../../../types/index';
 
 
 class News {

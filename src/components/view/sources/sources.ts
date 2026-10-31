@@ -1,5 +1,5 @@
 import './sources.css';
-import type { Source } from '../../../types/index.js';
+import type { Source } from '../../../types/index';
 
 
 class Sources {

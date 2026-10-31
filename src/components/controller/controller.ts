@@ -1,4 +1,4 @@
-import AppLoader from './appLoader.js';
+import AppLoader from './appLoader';
 import type { SourcesResponse, ArticlesResponse } from '../../types/index.js';
 
 class AppController extends AppLoader {
