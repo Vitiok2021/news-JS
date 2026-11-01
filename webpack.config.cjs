@@ -33,6 +33,7 @@ const baseConfig = {
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, './src/index.html'),
             filename: 'index.html',
+            favicon: './src/favicon.png',
         }),
         new CleanWebpackPlugin(),
         new CopyPlugin({
