@@ -1,6 +1,6 @@
 enum HttpMethod {
-    GET ="GET",
-    POST = "POST"
+    GET = 'GET',
+    POST = 'POST',
 }
 
 type Endpoint = 'sources' | 'everything';
@@ -43,7 +43,12 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    load<T>(method: HttpMethod, endpoint: Endpoint, callback: (data: T) => void, options: Partial<Record<string, string>> = {}) {
+    load<T>(
+        method: HttpMethod,
+        endpoint: Endpoint,
+        callback: (data: T) => void,
+        options: Partial<Record<string, string>> = {}
+    ) {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res) => res.json())
