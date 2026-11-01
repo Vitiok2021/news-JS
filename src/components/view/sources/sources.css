@@ -5,6 +5,7 @@
     max-height: 220px;
     overflow-y: auto;
     align-items: center;
+    align-content: flex-start;
     font:
         300 1em 'Fira Sans',
         sans-serif;
@@ -35,4 +36,13 @@
 .source__item-name {
     font-weight: 400;
     white-space: nowrap;
+}
+@media (width <= 768px) {
+    .source__item {
+        margin: 10px;
+        padding: 0.5em 1em;
+        color: #70d6ff;
+        transition: 0.25s;
+        cursor: pointer;
+    }
 }
